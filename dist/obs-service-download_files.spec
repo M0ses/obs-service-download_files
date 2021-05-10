@@ -18,8 +18,10 @@
 
 %if 0%{?fedora} || 0%{?rhel}
 %define build_pkg_name obs-build
+%define protocols_pkg setup
 %else
 %define build_pkg_name build
+%define protocols_pkg netcfg
 %endif
 
 %define service download_files
@@ -31,12 +33,14 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-%{service}
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  build
+BuildRequires:  %{build_pkg_name}
 BuildRequires:  bzip2
+BuildRequires:  curl
 BuildRequires:  make
-BuildRequires:  perl-File-Type
-BuildRequires:  perl-HTTP-Server-Simple
-BuildRequires:  perl-Path-Class
+BuildRequires:  %{protocols_pkg}
+BuildRequires:  perl(File::Type)
+BuildRequires:  perl(HTTP::Server::Simple)
+BuildRequires:  perl(Path::Class)
 BuildRequires:  tar
 Requires:       %{build_pkg_name} >= 2012.08.24
 Requires:       curl
