@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-download_files
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %if 0%{?fedora} || 0%{?rhel}
 %define build_pkg_name obs-build
 %else
@@ -27,18 +29,18 @@ Release:        0
 Summary:        An OBS source service: download files
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
-Url:            https://github.com/openSUSE/obs-service-%{service}
+URL:            https://github.com/openSUSE/obs-service-%{service}
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  perl-Path-Class
-BuildRequires:  perl-HTTP-Server-Simple
-BuildRequires:  perl-File-Type
-BuildRequires:  make
-BuildRequires:  tar
 BuildRequires:  build
 BuildRequires:  bzip2
+BuildRequires:  make
+BuildRequires:  perl-File-Type
+BuildRequires:  perl-HTTP-Server-Simple
+BuildRequires:  perl-Path-Class
+BuildRequires:  tar
 Requires:       %{build_pkg_name} >= 2012.08.24
-Requires:       diffutils
 Requires:       curl
+Requires:       diffutils
 # for appimage parser:
 Requires:       perl(YAML::XS)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
