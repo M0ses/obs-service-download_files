@@ -35,7 +35,7 @@ URL:            https://github.com/openSUSE/obs-service-%{service}
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  %{build_pkg_name}
 BuildRequires:  %{protocols_pkg}
-%if 0%{?suse_version} > 1202
+%if 0%{?suse_version} > 1202 && !0%{?sle_version}
 BuildRequires:  bzip2
 BuildRequires:  curl
 BuildRequires:  make
@@ -67,7 +67,7 @@ perl -p -i -e "s{#!/usr/bin/env bash}{#!/bin/bash}" download_files
 %makeinstall
 
 %check
-%if 0%{?suse_version} > 1202
+%if 0%{?suse_version} > 1202 && !0%{?sle_version}
 make check
 %endif
 
