@@ -16,7 +16,7 @@
 #
 
 
-%if 0%{?fedora} || 0%{?rhel}
+%if 0%{?fedora} || 0%{?rhel} || 0%{?mageia}
 %define build_pkg_name obs-build
 %define protocols_pkg setup
 %else
@@ -34,14 +34,14 @@ Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-%{service}
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  %{build_pkg_name}
+BuildRequires:  %{protocols_pkg}
 BuildRequires:  bzip2
 BuildRequires:  curl
 BuildRequires:  make
-BuildRequires:  %{protocols_pkg}
+BuildRequires:  tar
 BuildRequires:  perl(File::Type)
 BuildRequires:  perl(HTTP::Server::Simple)
 BuildRequires:  perl(Path::Class)
-BuildRequires:  tar
 Requires:       %{build_pkg_name} >= 2012.08.24
 Requires:       curl
 Requires:       diffutils
