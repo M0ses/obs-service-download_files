@@ -4,10 +4,8 @@ Section: devel
 Priority: extra
 Build-Depends: debhelper (>= 7)
 
-
 Standards-Version: 3.9.6
 Homepage: https://github.com/openSUSE/obs-service-download_files
-
 Package: obs-service-download-files
 Architecture: all
 Description: An OBS source service: download files
