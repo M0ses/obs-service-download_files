@@ -67,7 +67,9 @@ perl -p -i -e "s{#!/usr/bin/env bash}{#!/bin/bash}" download_files
 %makeinstall
 
 %check
+%if 0%{?suse_version} > 1202
 make check
+%endif
 
 %files
 %defattr(-,root,root)
