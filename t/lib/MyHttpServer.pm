@@ -3,7 +3,6 @@ use strict;
 use warnings;
 use FindBin;
 use IO::Socket;
-use File::LibMagic;
 
 sub new {
   my ($class, $port) = @_;
@@ -66,6 +65,17 @@ sub path_info {
   return $l;
 }
 
+sub filetype {
+  my ($self, $fn) = @_;
+  
+  my $ext={
+    'diff' => 'text/x-diff',
+    'gz'   => 'application/gzip',
+  };
+  return $ext->{$1} if ($fn =~ /\.(diff|gz)$/);
+  return 'text/plain';
+}
+
 sub header {
   my ($self, $code) = @_;
   my $ct = {
@@ -83,14 +93,13 @@ sub print_404 {
 
 sub file_handler {
   my ($self, $f) = @_;
-  my $magic = File::LibMagic->new;
   if (open(my $fh, '<', $f)) {
-    my $info = $magic->info_from_handle($fh);
+    my $mime_type = $self->filetype($f);
     local $/; # enable localized slurp mode
     my $fc = <$fh>;
     close $fh;
     my $l   = length($fc);
-    $self->send_sock("Content-Type: $info->{mime_type}\r\n");
+    $self->send_sock("Content-Type: $mime_type\r\n");
     $self->send_sock("Content-Length: $l\r\n\r\n");
     $self->send_sock($fc);
   } else {

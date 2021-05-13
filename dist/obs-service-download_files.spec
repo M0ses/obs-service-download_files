@@ -39,7 +39,6 @@ BuildRequires:  bzip2
 BuildRequires:  curl
 BuildRequires:  make
 BuildRequires:  tar
-BuildRequires:  perl(File::LibMagic)
 Requires:       %{build_pkg_name} >= 2012.08.24
 Requires:       curl
 Requires:       diffutils
