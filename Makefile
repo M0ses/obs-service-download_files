@@ -16,8 +16,6 @@ install:
 	install -m 0644 download_files.rc $(DESTDIR)$(serviceconfdir)/download_files
 
 test:
-
-check:
 	prove -v t/*.t
 
 clean:
