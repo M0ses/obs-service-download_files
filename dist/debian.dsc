@@ -5,4 +5,4 @@ Binary: obs-service-download-files
 Maintainer: Hib Eris <hib@hiberis.nl>
 Architecture: all
 Standards-Version: 3.9.6
-Build-Depends: debhelper (>= 7), libfile-libmagic-perl
+Build-Depends: debhelper (>= 7), libfile-libmagic-perl, build | obs-build, curl
