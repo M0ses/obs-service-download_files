@@ -40,6 +40,7 @@ BuildRequires:  curl
 BuildRequires:  make
 BuildRequires:  tar
 BuildRequires:  perl(Test::Harness)
+BuildRequires:  perl(Test::More)
 Requires:       %{build_pkg_name} >= 2012.08.24
 Requires:       curl
 Requires:       diffutils
